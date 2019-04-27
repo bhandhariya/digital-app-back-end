@@ -3,22 +3,33 @@ var mongoose=require('mongoose');
 var Children=require('../model/children_model');
 
 exports.createNewPatient=function(req,res,next){
+
     var pat=new Patient({
         _id:new mongoose.Types.ObjectId,
         addmission_date:req.body.addmission_date,
         first_name:req.body.first_name,
         last_name:req.body.last_name,
-        middle_name:req.body.middle_name
+        middle_name:req.body.middle_name,
+        profile_image:req.body.image
     });
     pat.save(function(err,patient){
         if(!err && patient){
             res.send(patient)
         }else{
-            res.send(err)
+            res.status(400).send();
         }
     })
 }
 
+
+exports.getall=function(req,res,next){
+
+    Patient.find().exec(function(err,pat){
+        if(!err && pat){
+            res.send(pat)
+        }
+    })
+}
 
 exports.getpatByID=function(req,res,next){
     var data=req.body;

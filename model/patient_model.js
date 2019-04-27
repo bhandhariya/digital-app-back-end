@@ -7,6 +7,7 @@ var PatientSchema = new Schema({
     first_name:{type:Schema.Types.String},
     middle_name:{type:Schema.Types.String},
     last_name:{type:Schema.Types.String},
+    profile_image:{type:Schema.Types.String,required:true},
     permanent_address:{type:Schema.Types.String},
     permanent_mobile:{type:Schema.Types.Number},
     permanent_fax:{type:Schema.Types.Number},

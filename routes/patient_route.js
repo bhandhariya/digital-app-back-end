@@ -10,6 +10,8 @@ router.get('/', function(req, res, next) {
 
 router.post('/create',PatientController.createNewPatient);
 
+router.get('/getall',PatientController.getall);
+
 router.post('/getpatByID',PatientController.getpatByID);
 
 router.post('/addPersonal',PatientController.addPersonal);
