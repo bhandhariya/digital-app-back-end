@@ -6,11 +6,11 @@ exports.createNewPatient=function(req,res,next){
 
     var pat=new Patient({
         _id:new mongoose.Types.ObjectId,
-        addmission_date:req.body.addmission_date,
-        first_name:req.body.first_name,
-        last_name:req.body.last_name,
+        addmission_date:req.body.AddmissionDate,
+        first_name:req.body.MiddleName,
+        last_name:req.body.LastName,
         middle_name:req.body.middle_name,
-        profile_image:req.body.image
+        profile_image:req.body.imageURL
     });
     pat.save(function(err,patient){
         if(!err && patient){
@@ -55,23 +55,25 @@ exports.getpatByName=function(req,res,next){
 
 exports.addPersonal=function(req,res,next){
     var data=req.body;
+    console.log(data)
     Patient.findByIdAndUpdate(data.id,{
-        permanent_address:data.permanent_address,
-        permanent_mobile:data.permanent_fax,
-        permanent_residance_number:data.permanent_residance_number,
-        permanent_landline:data.permanent_landline,
-        correspondence_address:data.correspondence_address,
-        correspondence_mobile:data.correspondence_mobile,
-        correspondence_fax:data.correspondence_fax,
-        correspondence_residance_number:data.correspondence_residance_number,
-        correspondence_landline:data.correspondence_landline,
-        email:data.email,
-        DOB:data.DOB,
-        age:data.age,
-        sex:data.sex,
-        marrital_status:data.marrital_status,
-        education:data.education,
-        occupation:data.occupation
+        permanent_address:data.ParmentAddress,
+        permanent_mobile:data.Mobile,
+        permanent_fax:data.OfficeFax,
+        permanent_residance_number:data.Residence,
+        permanent_landline:data.Landline,
+        correspondence_address:data.CorrespondenceAddress,
+        correspondence_mobile:data.Mobile,
+        correspondence_fax:data.OfficeFax,
+        correspondence_residance_number:data.Residence,
+        correspondence_landline:data.Landline,
+        email:data.Email,
+        DOB:data.DateOfBirth,
+        age:data.Age,
+        sex:data.Gender,
+        marrital_status:data.MaterialStatus,
+        education:data.Education,
+        occupation:data.Occupation
 
     }).exec(function(err,patien){
         if(!err && patien){
