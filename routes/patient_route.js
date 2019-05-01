@@ -14,6 +14,8 @@ router.get('/getall',PatientController.getall);
 
 router.post('/getpatByID',PatientController.getpatByID);
 
+router.post('/getpatByName',PatientController.getpatByName);
+
 router.post('/addPersonal',PatientController.addPersonal);
 
 router.post('/addFamilyData',PatientController.addFamilyData)

@@ -40,6 +40,19 @@ exports.getpatByID=function(req,res,next){
     })
 }
 
+
+exports.getpatByName=function(req,res,next){
+    var data=req.body;
+    console.log(data)
+    Patient.find({first_name:{$regex:data.name}}).exec(function(err,pat){
+        if(!err && pat){
+            res.send(pat)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
 exports.addPersonal=function(req,res,next){
     var data=req.body;
     Patient.findByIdAndUpdate(data.id,{
