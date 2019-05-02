@@ -86,24 +86,44 @@ exports.addPersonal=function(req,res,next){
 
 exports.addFamilyData=function(req,res,next){
     var data=req.body;
-    Patient.findByIdAndUpdate(data.id,{
-        spouse_name:data.spouse_name,
-        spouse_age:data.spouse_age,
-        spouse_occupation:data.spouse_occupation,
-        spouse_address:data.spouse_address,
-        spouse_relation_status:data.spouse_relation_status,
+    console.log(data)
+    // Patient.findByIdAndUpdate(data.id,{
+    //     spouse_name:data.SpouseName,
+    //     spouse_age:data.SpouseAge,
+    //     spouse_occupation:data.SpouseOccupation ,
+    //     spouse_address:data.SpouseAddress,
+    //     spouse_relation_status:data.LivingStatus,
+    //     no_of_childern:data.no_of_childern,
+    //     guardian_name:data.GuardianName,
+    //     guardian_contact_number:data.ContactNo ,
+    //     guardian_email:data.Email,
+    //     guardian_address:data.Address
+    // }).exec(function(err,patien){
+    //     if(!err && patien){
+    //         console.log(patien)
+    //     }else{
+    //         console.log(err)
+    //     }
+    // })
+
+    Patient.findOneAndUpdate({_id:data.id}, {$set:{
+        spouse_name:data.SpouseName,
+        spouse_age:data.SpouseAge,
+        spouse_occupation:data.SpouseOccupation ,
+        spouse_address:data.SpouseAddress,
+        spouse_relation_status:data.LivingStatus,
         no_of_childern:data.no_of_childern,
-        guardian_name:data.guardian_name,
-        guardian_contact_number:data.guardian_contact_number,
-        guardian_email:data.guardian_email,
-        guardian_address:data.guardian_address
-    }).exec(function(err,patien){
-        if(!err && patien){
-            res.send(patien)
-        }else{
-            res.send(err)
+        guardian_name:data.GuardianName,
+        guardian_contact_number:data.ContactNo ,
+        guardian_email:data.Email,
+        guardian_address:data.Address
+    }}, {new: true}, (err, doc) => {
+        if (err) {
+            console.log("Something wrong when updating data!");
         }
-    })
+    
+        res.send(doc)
+    });
 }
 
 exports.addGuardian=function(req,res,next){
@@ -126,10 +146,10 @@ exports.addChildren=function(req,res,next){
     var data=req.body;
     var Child=new Children({
         patient_id:data.id,
-        name:data.name,
-        number:data.number,
-        email:data.email,
-        address:data.address
+        name:data.NameOfChild,
+        number:data.ContactNo,
+        email:data.Email,
+        address:data.Address
     })
     Child.save(function(err,chi){
         if(!err && chi){
