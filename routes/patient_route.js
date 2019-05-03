@@ -24,4 +24,10 @@ router.post('/addGuardian',PatientController.addGuardian);
 
 router.post('/addchild',PatientController.addChildren);
 
+router.post('/addcomplain',PatientController.addcomplain);
+
+router.post('/addIllness',PatientController.addIllness);
+
+router.post('/addHistory',PatientController.addHistory);
+
 module.exports = router;

@@ -52,4 +52,20 @@ PatientSchema.virtual('childrensdetails',{
     justOne: false
 })
 
+PatientSchema.virtual('Complaintsdetails',{
+    ref:'Complain',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+PatientSchema.virtual('Illnessdetails',{
+    ref:'Illness',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+
+
 module.exports = mongoose.model('Patient', PatientSchema);

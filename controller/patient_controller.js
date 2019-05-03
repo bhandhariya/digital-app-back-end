@@ -1,13 +1,16 @@
 var Patient=require('../model/patient_model');
 var mongoose=require('mongoose');
 var Children=require('../model/children_model');
+var Complain=require('../model/complain_model');
+var Illness=require('../model/illness_model');
+var History=require('../model/history_model');
 
 exports.createNewPatient=function(req,res,next){
-
+    
     var pat=new Patient({
         _id:new mongoose.Types.ObjectId,
         addmission_date:req.body.AddmissionDate,
-        first_name:req.body.MiddleName,
+        first_name:req.body.FirstName,
         last_name:req.body.LastName,
         middle_name:req.body.middle_name,
         profile_image:req.body.imageURL
@@ -24,7 +27,7 @@ exports.createNewPatient=function(req,res,next){
 
 exports.getall=function(req,res,next){
 
-    Patient.find().exec(function(err,pat){
+    Patient.find().populate('childrensdetails').exec(function(err,pat){
         if(!err && pat){
             res.send(pat)
         }
@@ -158,4 +161,80 @@ exports.addChildren=function(req,res,next){
             res.send(err)
         }
     })
+}
+
+exports.addcomplain=function(req,res,next){
+    var data = req.body;
+    var complain=new Complain({
+        patient_id:data.id,
+        complain:data.Complaint,
+        complain_duration:data.ComplaintDuration
+    })
+    complain.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addIllness=function(req,res,next){
+    var data = req.body;
+    var ill=new Illness({
+        patient_id:data.id,
+        DurationOfCurruntIllness:data.DurationOfCurruntIllness,
+        CurruntEpisodeNumber:data.CurruntEpisodeNumber,
+        ModeOfOnset:data.ModeOfOnset,
+        Course:data.Course,
+        PredisposingFactors:data.PredisposingFactors,
+        PrecipatingFactors:data.PrecipatingFactors,
+        PrepetuatingFactors:data.PrepetuatingFactors
+    })
+    ill.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addHistory=function(req,res,next){
+    var data = req.body;
+    var his=new History({
+        patient_id:data.id,
+        History : data.History,
+        PsychiatricHistory:data.PsychiatricHistory,
+        MedicalSurgicalHistory:data.MedicalSurgicalHistory,
+        PresentTreateHistory:data.PresentTreateHistory,
+        PastTreateHistory:data.PastTreateHistory,
+        FamilyMentalHistory:data.FamilyMentalHistory,
+        FamilyEnvironmentHistory:data.FamilyEnvironmentHistory,
+        FamilyAttituteHistory:data.FamilyAttituteHistory,
+        LivingConditionHistory:data.LivingConditionHistory,
+        BirthHistory:data.BirthHistory,
+        ImmunizationHistory:data.ImmunizationHistory,
+        DevelopmentHistory:data.DevelopmentHistory,
+        EducationHistory:data.EducationHistory,
+        OccupationHistory:data.OccupationHistory,
+        MarritalSexualHistory:data.MarritalSexualHistory,
+        MenstrualObstetricHistory:data.MenstrualObstetricHistory,
+        HistoryOfChoise:data.HistoryOfChoise,
+        HistoryOfTotalDurationOfUse:data.HistoryOfTotalDurationOfUse,
+        HistoryOfDurationOfRegularlUse:data.HistoryOfDurationOfRegularlUse,
+        HistoryOfDailyIntake:data.HistoryOfDailyIntake,
+        HistoryofLastIntakeOfDrug:data.HistoryofLastIntakeOfDrug,
+        HistoryOfModeOfIntake:data.HistoryOfModeOfIntake,   
+        HomosideAttepts:data.HomosideAttepts,
+        PreMorbidPersonality:data.PreMorbidPersonality  
+    })
+    his.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+
 }
