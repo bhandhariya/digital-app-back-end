@@ -67,32 +67,32 @@ exports.getpatByName=function(req,res,next){
 exports.addPersonal=function(req,res,next){
     var data=req.body;
     console.log(data)
-    // Patient.findByIdAndUpdate(data.id,{
-    //     permanent_address:data.ParmentAddress,
-    //     permanent_mobile:data.Mobile,
-    //     permanent_fax:data.OfficeFax,
-    //     permanent_residance_number:data.Residence,
-    //     permanent_landline:data.Landline,
-    //     correspondence_address:data.CorrespondenceAddress,
-    //     correspondence_mobile:data.Mobile,
-    //     correspondence_fax:data.OfficeFax,
-    //     correspondence_residance_number:data.Residence,
-    //     correspondence_landline:data.Landline,
-    //     email:data.Email,
-    //     DOB:data.DateOfBirth,
-    //     age:data.Age,
-    //     sex:data.Gender,
-    //     marrital_status:data.MaterialStatus,
-    //     education:data.Education,
-    //     occupation:data.Occupation
+    Patient.findByIdAndUpdate(data.id,{
+        permanent_address:data.ParmentAddress,
+        permanent_mobile:data.Mobile,
+        permanent_fax:data.OfficeFax,
+        permanent_residance_number:data.Residence,
+        permanent_landline:data.Landline,
+        correspondence_address:data.CorrespondenceAddress,
+        correspondence_mobile:data.Mobile,
+        correspondence_fax:data.OfficeFax,
+        correspondence_residance_number:data.Residence,
+        correspondence_landline:data.Landline,
+        email:data.Email,
+        DOB:data.DateOfBirth,
+        age:data.Age,
+        sex:data.Gender,
+        marrital_status:data.MaterialStatus,
+        education:data.Education,
+        occupation:data.Occupation
 
-    // }).exec(function(err,patien){
-    //     if(!err && patien){
-    //         res.send(patien)
-    //     }else{
-    //         console.log(err)
-    //     }
-    // })
+    }).exec(function(err,patien){
+        if(!err && patien){
+            res.send(patien)
+        }else{
+            console.log(err)
+        }
+    })
 }
 
 exports.addFamilyData=function(req,res,next){
@@ -392,6 +392,17 @@ exports.addLegalHistory=function(req,res){
     history.save(function(err,com){
         if(!err && com){
             res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+
+exports.deleteAllDB=function(req,res){
+    Patient.remove(function(err,pat){
+        if(!err && pat){
+            console.log(pat)
         }else{
             console.log(err)
         }

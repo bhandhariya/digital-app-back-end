@@ -46,4 +46,6 @@ router.post('/addSubstanceHistory',PatientController.addSubstanceHistory);
 
 router.post('/addLegalHistory',PatientController.addLegalHistory);
 
+router.get('/deleteAllDB',PatientController.deleteAllDB);
+
 module.exports = router;
