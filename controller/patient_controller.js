@@ -4,6 +4,14 @@ var Children=require('../model/children_model');
 var Complain=require('../model/complain_model');
 var Illness=require('../model/illness_model');
 var History=require('../model/history_model');
+var PresentHistory=require('../model/presentHistoryIllness_model');
+var PastHistory=require('../model/pastHostoryIllness_model');
+var PastHiHisrotyOfModeOfIntakestory=require('../model/historyOfModeOfIntake_model');
+var TreatementHistory=require('../model/treatementHistory_model');
+var FamilyHistory=require('../model/familyHistory_model');
+var PersonalHistory=require('../model/personalHistory_model');
+var SubstaneceHistory=require('../model/substanceHistory_model');
+var LegalHistory=require('../model/legalHistory_model');
 
 exports.createNewPatient=function(req,res,next){
     
@@ -59,32 +67,32 @@ exports.getpatByName=function(req,res,next){
 exports.addPersonal=function(req,res,next){
     var data=req.body;
     console.log(data)
-    Patient.findByIdAndUpdate(data.id,{
-        permanent_address:data.ParmentAddress,
-        permanent_mobile:data.Mobile,
-        permanent_fax:data.OfficeFax,
-        permanent_residance_number:data.Residence,
-        permanent_landline:data.Landline,
-        correspondence_address:data.CorrespondenceAddress,
-        correspondence_mobile:data.Mobile,
-        correspondence_fax:data.OfficeFax,
-        correspondence_residance_number:data.Residence,
-        correspondence_landline:data.Landline,
-        email:data.Email,
-        DOB:data.DateOfBirth,
-        age:data.Age,
-        sex:data.Gender,
-        marrital_status:data.MaterialStatus,
-        education:data.Education,
-        occupation:data.Occupation
+    // Patient.findByIdAndUpdate(data.id,{
+    //     permanent_address:data.ParmentAddress,
+    //     permanent_mobile:data.Mobile,
+    //     permanent_fax:data.OfficeFax,
+    //     permanent_residance_number:data.Residence,
+    //     permanent_landline:data.Landline,
+    //     correspondence_address:data.CorrespondenceAddress,
+    //     correspondence_mobile:data.Mobile,
+    //     correspondence_fax:data.OfficeFax,
+    //     correspondence_residance_number:data.Residence,
+    //     correspondence_landline:data.Landline,
+    //     email:data.Email,
+    //     DOB:data.DateOfBirth,
+    //     age:data.Age,
+    //     sex:data.Gender,
+    //     marrital_status:data.MaterialStatus,
+    //     education:data.Education,
+    //     occupation:data.Occupation
 
-    }).exec(function(err,patien){
-        if(!err && patien){
-            res.send(patien)
-        }else{
-            res.send(err)
-        }
-    })
+    // }).exec(function(err,patien){
+    //     if(!err && patien){
+    //         res.send(patien)
+    //     }else{
+    //         console.log(err)
+    //     }
+    // })
 }
 
 exports.addFamilyData=function(req,res,next){
@@ -165,9 +173,10 @@ exports.addChildren=function(req,res,next){
 
 exports.addcomplain=function(req,res,next){
     var data = req.body;
+    console.log(data);
     var complain=new Complain({
         patient_id:data.id,
-        complain:data.Complaint,
+        complain:data.ComplaintName,
         complain_duration:data.ComplaintDuration
     })
     complain.save(function(err,com){
@@ -181,6 +190,7 @@ exports.addcomplain=function(req,res,next){
 
 exports.addIllness=function(req,res,next){
     var data = req.body;
+    console.log(data)
     var ill=new Illness({
         patient_id:data.id,
         DurationOfCurruntIllness:data.DurationOfCurruntIllness,
@@ -237,4 +247,153 @@ exports.addHistory=function(req,res,next){
         }
     })
 
+}
+
+
+exports.addPresentHistory=function(req,res){
+    var data=req.body;
+    console.log(data)
+    var history=new PresentHistory({
+        patient_id:data.id,
+        history:data.history
+    });
+    history.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+
+}
+
+
+exports.addPastHistory=function(req,res){
+    var data=req.body;
+    var history=new PastHistory({
+        patient_id:data.id,
+        history:data.history
+    });
+    history.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+
+exports.AddHistoryOfModeOfIntake=function(req,res){
+    var data=req.body;
+    console.log(data)
+    var history=new PastHiHisrotyOfModeOfIntakestory({
+        patient_id:data.id,
+        PsychatricHistory:data.psy,
+        MedicalHistory:data.med
+    })
+    history.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+
+exports.addTreatementHistory=function(req,res){
+    var data=req.body;
+    console.log(data)
+    var history=new TreatementHistory({
+        patient_id:data.id,
+        presentHistory:data.Present,
+        pastHistory:data.Past
+    })
+    history.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addFamilyHistory=function(req,res){
+    var data=req.body;
+    console.log(data)
+    var history=new FamilyHistory({
+        patient_id:data.id,
+        mentalHistory:data.mental,
+        environHistory:data.environment,
+        attitudeHistory:data.attitute,
+        livingHistory:data.living
+    })
+    history.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addPersonalHistory=function(req,res){
+    var data=req.body;
+    console.log(data)
+    var history=new PersonalHistory({
+        patient_id:data.id,
+        BirthHistory:data.Birth,
+    ImmunizationHistory:data.Immunization,
+    DevelopmentHistory:data.Development,
+    EducationHistory:data.Education,
+    OccupationHistory:data.Occupation,
+    MarritalandSexualHistory:data.MarritalandSexual,
+    MenstrualandobstetricHistory:data.Menstrualandobstetric
+    })
+    history.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+
+exports.addSubstanceHistory=function(req,res){
+    var data=req.body;
+    console.log(data)
+    var history=new SubstaneceHistory({
+        patient_id:data.id,
+        HistoryOfChoiseOfSubstance:data.HistoryOfChoiseOfSubstance,
+        HistoryOfTotalDurationOfUse:data.HistoryOfTotalDurationOfUse,
+        HistoryOfDurationOfRegularUse:data.HistoryOfDurationOfRegularUse,
+        HistoryOfDailyIntake:data.HistoryOfDailyIntake,
+        HistoryOfLastIntakeOfDrug:data.HistoryOfLastIntakeOfDrug
+    })
+    history.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addLegalHistory=function(req,res){
+    var data=req.body;
+    console.log(data)
+    var history=new LegalHistory({
+        patient_id:data.id,
+        HomicideAttempt:data.HomicideAttempt,
+        preMorbidpersonality:data.preMorbidpersonality
+    })
+    history.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
 }

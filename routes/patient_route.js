@@ -30,4 +30,20 @@ router.post('/addIllness',PatientController.addIllness);
 
 router.post('/addHistory',PatientController.addHistory);
 
+router.post('/addPresentHistory',PatientController.addPresentHistory);
+
+router.post('/addPastHistory',PatientController.addPastHistory);
+
+router.post('/addHistoryOfModeOfIntake',PatientController.AddHistoryOfModeOfIntake);
+
+router.post('/addTreatementHistory',PatientController.addTreatementHistory);
+
+router.post('/addFamilyHistory',PatientController.addFamilyHistory);
+
+router.post('/addPersonalHistory',PatientController.addPersonalHistory);
+
+router.post('/addSubstanceHistory',PatientController.addSubstanceHistory);
+
+router.post('/addLegalHistory',PatientController.addLegalHistory);
+
 module.exports = router;

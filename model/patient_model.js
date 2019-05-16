@@ -66,6 +66,64 @@ PatientSchema.virtual('Illnessdetails',{
     justOne: false
 })
 
+PatientSchema.virtual('PresentHistoryDetails',{
+    ref:'PresentHistory',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+PatientSchema.virtual('PastHistoryDetails',{
+    ref:'PastHistory',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+PatientSchema.virtual('PastHiHisrotyOfModeOfIntakestorydetails',{
+    ref:'PastHiHisrotyOfModeOfIntakestory',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+PatientSchema.virtual('TreateMentHistoryDetails',{
+    ref:'TreatementHistory',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+PatientSchema.virtual('FamilyHistoryDetails',{
+    ref:'FamilyHistory',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+
+PatientSchema.virtual('PersonalHistoryDetails',{
+    ref:'PersonalHistory',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+
+PatientSchema.virtual('SubstanceHistoryDetails',{
+    ref:'SubstanceHistory',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+
+PatientSchema.virtual('LegalHistoryDetails',{
+    ref:'LegalHistory',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
 
 
 module.exports = mongoose.model('Patient', PatientSchema);
