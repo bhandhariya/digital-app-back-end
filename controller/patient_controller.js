@@ -408,3 +408,33 @@ exports.deleteAllDB=function(req,res){
         }
     })
 }
+
+exports.getAlldatafortable=function(req,res){
+    Patient.findById(req.body.id)
+    .populate('childrensdetails')
+    .populate('Complaintsdetails')
+    .populate('Illnessdetails')
+    .populate('PresentHistoryDetails')
+    .populate('PastHistoryDetails')
+    .populate('PastHiHisrotyOfModeOfIntakestorydetails')
+    .populate('TreateMentHistoryDetails')
+    .populate('FamilyHistoryDetails')
+    .populate('PersonalHistoryDetails')
+    .populate('SubstanceHistoryDetails')
+    .populate('LegalHistoryDetails')
+    .exec(function(err,pat){
+        if(pat){
+            res.send(pat)
+        }
+    })
+}
+
+exports.getPatientCount=function(req,res){
+    Patient.countDocuments(function(err,pat){
+        if(pat){
+            res.send({pat:pat})
+        }else{
+            console.log(err)
+        }
+    })
+}

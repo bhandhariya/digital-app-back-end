@@ -8,6 +8,8 @@ router.get('/', function(req, res, next) {
   res.send('respond with a resource');
 });
 
+router.post('/alldata',PatientController.getAlldatafortable);
+
 router.post('/create',PatientController.createNewPatient);
 
 router.get('/getall',PatientController.getall);
@@ -47,5 +49,7 @@ router.post('/addSubstanceHistory',PatientController.addSubstanceHistory);
 router.post('/addLegalHistory',PatientController.addLegalHistory);
 
 router.get('/deleteAllDB',PatientController.deleteAllDB);
+
+router.get('/getPatientCount',PatientController.getPatientCount);
 
 module.exports = router;
