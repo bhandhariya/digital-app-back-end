@@ -52,4 +52,12 @@ router.get('/deleteAllDB',PatientController.deleteAllDB);
 
 router.get('/getPatientCount',PatientController.getPatientCount);
 
+router.post('/addGeneralAptitudeBehaviour',PatientController.addGeneralAptitudeBehaviour);
+
+router.post('/addPsychomotorActivitySpeech',PatientController.addPsychomotorActivitySpeech);
+
+router.post('/addAffect',PatientController.addAffect);
+
+router.post('/addThoughtContent',PatientController.addThoughtContent);
+
 module.exports = router;

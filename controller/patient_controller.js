@@ -12,6 +12,10 @@ var FamilyHistory=require('../model/familyHistory_model');
 var PersonalHistory=require('../model/personalHistory_model');
 var SubstaneceHistory=require('../model/substanceHistory_model');
 var LegalHistory=require('../model/legalHistory_model');
+var GeneralAptitudeBehaviour=require('../model/GeneralAppearanceAttitudeBehaviour_model');
+var PsychomotorActivitySpeech=require('../model/PsychomotorActivitySpeech_model');
+var Affect=require('../model/affect_model');
+var ThoughtContent=require('../model/thoughtContent_model');
 
 exports.createNewPatient=function(req,res,next){
     
@@ -433,6 +437,121 @@ exports.getPatientCount=function(req,res){
     Patient.countDocuments(function(err,pat){
         if(pat){
             res.send({pat:pat})
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addGeneralAptitudeBehaviour=function(req,res){
+    var data=req.body;
+    console.log(data)
+    var obj=new GeneralAptitudeBehaviour({
+        patient_id:data.id,
+        Appearance:data.Appearance,
+      LevelofGrooming:data.LevelofGrooming,
+      LevelofCleanliness:data.LevelofCleanliness,
+      LevelofConsciousness:data.LevelofConsciousness,
+      Gait:data.Gait,
+      Posture:data.Posture,
+      ModeOfEntry:data.ModeOfEntry,
+      Cooperative:data.Cooperative,
+      EyetoEyeContact:data.EyetoEyeContact,
+      Rapport:data.Rapport,
+      Gesturing:data.Gesturing,
+      OtherMovements:data.OtherMovements,
+      otherCatatolicPhemenon:data.otherCatatolicPhemenon 
+    })
+    obj.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+
+exports.addPsychomotorActivitySpeech=function(req,res){
+    var data=req.body;
+   
+    var obj=new PsychomotorActivitySpeech({
+        patient_id:data.id,
+        PsychomotorActivity:data.PsychomotorActivity,
+        Initiation:data.Initiation,
+        ReactionTime:data.ReactionTime,
+        Speed:data.Speed,
+        LevelofConsciousnessinSpeech:data.LevelofConsciousnessinSpeech,
+        Output:data.Output,
+        PressureOfSpeech:data.PressureOfSpeech,
+        Volume:data.Volume,
+        Tone:data.Tone,
+        Manner:data.Manner,
+        Relavance:data.Relavance,
+        Coherence:data.Coherence,
+        Other:data.Other,
+        example:data.example
+    })
+   
+    obj.save(function(err,com){
+        if(!err && com){
+            console.log(com)
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+
+exports.addAffect=function(req,res){
+    var data=req.body;
+   
+    var obj=new Affect({
+        patient_id:data.id,
+        Subjective:data.Subjective,
+        Objectivetext:data.Objectivetext,
+        Objective:data.Objective,
+        Congruence:data.Congruence,
+        Stability:data.Stability,
+        Range:data.Range
+       
+    })
+   
+    obj.save(function(err,com){
+        if(!err && com){
+            console.log(com)
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+
+exports.addThoughtContent=function(req,res){
+    var data=req.body;
+   console.log(data)
+    var obj=new ThoughtContent({
+        patient_id:data.id,
+        Stream:data.Stream,
+        Form:data.Form,
+        FormExample:data.FormExample,
+        ThoughtContent:data.ThoughtContent,
+        ThoughtContentExample:data.ThoughtContentExample,
+        First:data.First,
+        Second:data.Second,
+        Third:data.Third,
+        Fourth:data.Fourth,
+        Fifth:data.Fifth,
+        ThoughtContentExample2:data.ThoughtContentExample2
+       
+    })
+   
+    obj.save(function(err,com){
+        if(!err && com){
+            console.log(com)
+            res.send(com)
         }else{
             console.log(err)
         }
