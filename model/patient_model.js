@@ -156,4 +156,57 @@ PatientSchema.virtual('ThoughtContentDetails',{
 })
 
 
+PatientSchema.virtual('PossessionDetails',{
+    ref:'Possession',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+PatientSchema.virtual('PerceptionDetails',{
+    ref:'Perception',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+
+PatientSchema.virtual('CognitiveFunctionDetails',{
+    ref:'CognitiveFunction',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+
+PatientSchema.virtual('IntelligenceDetails',{
+    ref:'Intelligence',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+PatientSchema.virtual('JudgementDetails',{
+    ref:'Judgement',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+PatientSchema.virtual('InsightDetails',{
+    ref:'Insight',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+PatientSchema.virtual('GPEDetails',{
+    ref:'GPE',
+    localField: '_id',
+    foreignField: 'patient_id',
+    justOne: false
+})
+
+
+
 module.exports = mongoose.model('Patient', PatientSchema);

@@ -16,6 +16,15 @@ var GeneralAptitudeBehaviour=require('../model/GeneralAppearanceAttitudeBehaviou
 var PsychomotorActivitySpeech=require('../model/PsychomotorActivitySpeech_model');
 var Affect=require('../model/affect_model');
 var ThoughtContent=require('../model/thoughtContent_model');
+var Possession=require('../model/possession_model');
+var Perception=require('../model/Perception_model');
+var CognitiveFunction=require('../model/congnitiveFunction_model');
+var Intelligence=require('../model/intelligence_model');
+var Judgement=require('../model/judgement_model');
+var Insight=require('../model/insight_model');
+var GPE=require('../model/generalPhysicalExamination_model');
+
+
 
 exports.createNewPatient=function(req,res,next){
     
@@ -306,6 +315,13 @@ exports.AddHistoryOfModeOfIntake=function(req,res){
 }
 
 
+
+exports.TestAPI=function(req,res){
+    var data=req.body;
+    console.log(data)
+    res.send(data)
+}
+
 exports.addTreatementHistory=function(req,res){
     var data=req.body;
     console.log(data)
@@ -552,6 +568,194 @@ exports.addThoughtContent=function(req,res){
         if(!err && com){
             console.log(com)
             res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addPossession=function(req,res){
+    var data=req.body;
+   console.log(data)
+    var obj=new Possession({
+        patient_id:data.id,
+        Obsession:data.Obsession,
+        Complusion:data.Complusion,
+        ObsessiveCompulsive:data.ObsessiveCompulsive,
+        ThoughtAlienationPhenomenon:data.ThoughtAlienationPhenomenon,
+        ThoughtAlienationPhenomenonExample:data.ThoughtAlienationPhenomenonExample
+       
+    })
+   
+    obj.save(function(err,com){
+        if(!err && com){
+            console.log(com)
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+
+exports.addPerception=function(req,res){
+    var data=req.body;
+   console.log(data)
+    var obj=new Perception({
+        patient_id:data.id,
+        Perception1:Data.Perception1,
+        Perception2:Data.Perception2,
+        Perception3:Data.Perception3,
+        PerceptionExample:Data.PerceptionExample
+       
+    })
+   
+    obj.save(function(err,com){
+        if(!err && com){
+            console.log(com)
+            
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addCongnitiveFunction=function(req,res,next){
+    var data=req.body;
+    console.log(data);
+   
+    var obj=new CognitiveFunction({
+        patient_id:data.id,
+        ConsciousLevel:data.ConsciousLevel,
+  Attention:data.Attention,
+  AttentionDigitForward:data.AttentionDigitForward,
+  AttentionDigitBackward:data.AttentionDigitBackward,
+  Concentration:data.Concentration,
+  ConcentrationSerialSubstraction:data.ConcentrationSerialSubstraction,
+  Orientation:data.Orientation,
+  OrientationTime:data.OrientationTime,
+  OrientationTimeCheck:data.OrientationTimeCheck,
+  OrientationPlace:data.OrientationPlace,
+  OrientationPlaceCheck:data.OrientationPlaceCheck,
+  OrientationPerson:data.OrientationPerson,
+  OrientationPersonCheck:data.OrientationPersonCheck,
+  Memory:data.Memory,
+  RecentVerbalRecall3ObjAfter5Minut:data.RecentVerbalRecall3ObjAfter5Minut,
+  RecentVerbalRecall3ObjAfter10Minut:data.RecentVerbalRecall3ObjAfter10Minut,
+  RecentVerbalRecall5ObjAfter5Minut:data.RecentVerbalRecall5ObjAfter5Minut,
+  RecentVerbalRecall5ObjAfter10Minut:data.RecentVerbalRecall5ObjAfter10Minut,
+  RecentVisualRecallAfter5Minut:data.RecentVisualRecallAfter5Minut,
+  RecentVisualRecallAfter10Minut:data.RecentVisualRecallAfter10Minut,
+  RemotePersonalEvents:data.RemotePersonalEvents,
+  RemoteImPersonalEvents:data.RemoteImPersonalEvents,
+  RemoteIllnessRelatedEvents:data.RemoteIllnessRelatedEvents
+    })
+    obj.save(function(err,result){
+        if(!err && result){
+            res.send(result)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addIntelligence=function(req,res,next){
+    var data=req.body;
+    console.log(data);
+   
+    var obj=new Intelligence({
+        patient_id:data.id,
+        IntelligenceComprehension:data.IntelligenceComprehension,
+        IntelligenceComprehensionCheck:data.IntelligenceComprehensionCheck,
+        IntelligenceVocabulary:data.IntelligenceVocabulary,
+        IntelligenceVocabularyCheck:data.IntelligenceVocabularyCheck,
+        GeneralFundofInformation:data.GeneralFundofInformation,
+        GeneralFundofInformationCheck:data.GeneralFundofInformationCheck,
+        ArithmeticAbility:data.ArithmeticAbility,
+        ArithmeticAbilityCheck:data.ArithmeticAbilityCheck,
+        Abstraction:data.Abstraction,
+        InterpretationofProverb:data.InterpretationofProverb,
+        SimilaritiesbetweenPairedObject:data.SimilaritiesbetweenPairedObject,
+        DIsSimilaritiesbetweenPairedObject:data.DIsSimilaritiesbetweenPairedObject
+        
+    })
+    obj.save(function(err,result){
+        if(!err && result){
+            res.send(result)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+
+exports.addJudgement=function(req,res,next){
+    var data=req.body;
+    console.log(data);
+   
+    var obj=new Judgement({
+        patient_id:data.id,
+        JudgementPerosnal:data.JudgementPerosnal,
+        JudgementSocial:data.JudgementSocial,
+        JudgementTest:data.JudgementTest
+        
+        
+    })
+    obj.save(function(err,result){
+        if(!err && result){
+            res.send(result)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addInsight=function(req,res,next){
+    var data=req.body;
+    console.log(data);
+   
+    var obj=new Insight({
+        patient_id:data.id,
+        AwarenessofAbnormalBehaviourExperience:data.AwarenessofAbnormalBehaviourExperience,
+      AttributiontoPhysicalCause:data.AttributiontoPhysicalCause,
+      RecognitionofPersonalResponsibility:data.RecognitionofPersonalResponsibility,
+      WillingnesstotakeTreatement:data.WillingnesstotakeTreatement,
+      Grade:data.Grade
+        
+        
+    })
+    obj.save(function(err,result){
+        if(!err && result){
+            res.send(result)
+        }else{
+            console.log(err)
+        }
+    })
+}
+
+exports.addGPE=function(req,res,next){
+    var data=req.body;
+    console.log(data);
+   
+    var obj=new GPE({
+        patient_id:data.id,
+        GPEConsciousness:data.GPEConsciousness,
+        GPEBuilt:data.GPEBuilt,
+        GPEInspection:data.GPEInspection,
+        GPEPluse:data.GPEPluse,
+        GPERespiration:data.GPERespiration,
+        GPEBodyTemperature:data.GPEBodyTemperature,
+        GPEBloodPressure:data.GPEBloodPressure,
+        RespiratorySystem:data.RespiratorySystem,
+        CardioVescularSystem:data.CardioVescularSystem,
+        GPEGastroIntestinalSystem:data.GPEGastroIntestinalSystem,
+        CentralNervousSystem:data.CentralNervousSystem
+        
+        
+    })
+    obj.save(function(err,result){
+        if(!err && result){
+            res.send(result)
         }else{
             console.log(err)
         }
