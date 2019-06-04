@@ -442,6 +442,17 @@ exports.getAlldatafortable=function(req,res){
     .populate('PersonalHistoryDetails')
     .populate('SubstanceHistoryDetails')
     .populate('LegalHistoryDetails')
+    .populate('generalAptitudeBehaviourDetails')
+    .populate('PsychomotorActivitySpeechDetails')
+    .populate('AffectsDetails')
+    .populate('ThoughtContentDetails')
+    .populate('PossessionDetails')
+    .populate('PerceptionDetails')
+    .populate('CognitiveFunctionDetails')
+    .populate('IntelligenceDetails')
+    .populate('JudgementDetails')
+    .populate('InsightDetails')
+    .populate('GPEDetails')
     .exec(function(err,pat){
         if(pat){
             res.send(pat)
