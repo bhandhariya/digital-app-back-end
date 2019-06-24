@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var User=require('../controller/user_controller');
 
 
 /* GET users listing. */
@@ -13,6 +14,8 @@ router.post('/test', function(req, res, next) {
  console.log(data)
 
 });
+
+router.post('/register',User.register);
 
 
 
