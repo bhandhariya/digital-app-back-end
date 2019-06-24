@@ -1,4 +1,6 @@
 var User=require('../model/user_model');
+var jwt = require('jsonwebtoken');
+var privateKey="this is a hard coded"
 
 
 exports.test=function(req,res,next){
@@ -8,6 +10,21 @@ exports.test=function(req,res,next){
 
 
 
+exports.login=function(req,res,next){
+    var data=req.body;
+    User.findOne({uid:data.uid,email:data.email}).exec(function(err,use){
+        if(!err && use){
+            var token=jwt.sign({
+                exp: Math.floor(Date.now() / 1000) + (60 * 60),
+                data: use
+              }, privateKey);
+            
+            res.send({token:token})
+        }else{
+            res.send(err)
+        }
+    })
+}
 
 
 
