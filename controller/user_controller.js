@@ -19,7 +19,7 @@ exports.login=function(req,res,next){
                 data: use
               }, privateKey);
             
-            res.send({token:token})
+            res.send({token:token,user:use})
         }else{
             res.send(err)
         }
