@@ -9,6 +9,16 @@ exports.test=function(req,res,next){
 }
 
 
+exports.getDataById=function(req,res,next){
+    var data=req.body;
+    User.findById(data.id).exec(function(err,pat){
+        if(!err && pat){
+            res.send(pat)
+        }
+    })
+}
+
+
 
 exports.login=function(req,res,next){
     var data=req.body;
