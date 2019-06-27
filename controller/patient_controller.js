@@ -27,20 +27,35 @@ var GPE=require('../model/generalPhysicalExamination_model');
 
 
 exports.createNewPatient=function(req,res,next){
-    
+    console.log(req.body)
     var pat=new Patient({
         _id:new mongoose.Types.ObjectId,
-        addmission_date:req.body.AddmissionDate,
-        first_name:req.body.FirstName,
-        last_name:req.body.LastName,
-        middle_name:req.body.middle_name,
-        profile_image:req.body.imageURL
+        doctorName:req.body.doctorName,
+        addmission_date:req.body.addmissionDate,
+        first_name:req.body.firstName,
+        last_name:req.body.lastName,
+        middle_name:req.body.middleName,
+        profile_image:req.body.imageURL,
+        permanent_address:req.body.permanentAddress,
+        permanent_mobile:req.body.mobileNumber,
+        permanent_residance_number:req.body.residanceNumber,
+        permanent_landline:req.body.landlineNumber,
+        correspondence_address:req.body.correspondenceAddress,
+        officeNumber:req.body.officeNumber,
+        email:req.body.email,
+        DOB:req.body.DOB,
+        age:req.body.age,
+        sex:req.body.gender,
+        marrital_status:req.body.maritalStatus,
+        education:req.body.education,
+        occupation:req.body.occupation,
+        
     });
     pat.save(function(err,patient){
         if(!err && patient){
-            res.send(patient)
+            res.status(200).send(patient)
         }else{
-            res.status(400).send();
+            res.status(400).send(err);
         }
     })
 }
@@ -111,37 +126,24 @@ exports.addPersonal=function(req,res,next){
 exports.addFamilyData=function(req,res,next){
     var data=req.body;
     console.log(data)
-    // Patient.findByIdAndUpdate(data.id,{
-    //     spouse_name:data.SpouseName,
-    //     spouse_age:data.SpouseAge,
-    //     spouse_occupation:data.SpouseOccupation ,
-    //     spouse_address:data.SpouseAddress,
-    //     spouse_relation_status:data.LivingStatus,
-    //     no_of_childern:data.no_of_childern,
-    //     guardian_name:data.GuardianName,
-    //     guardian_contact_number:data.ContactNo ,
-    //     guardian_email:data.Email,
-    //     guardian_address:data.Address
-    // }).exec(function(err,patien){
-    //     if(!err && patien){
-    //         console.log(patien)
-    //     }else{
-    //         console.log(err)
-    //     }
-    // })
+    
 
-    Patient.findOneAndUpdate({_id:data.id}, {$set:{
-        spouse_name:data.SpouseName,
-        spouse_age:data.SpouseAge,
-        spouse_occupation:data.SpouseOccupation ,
-        spouse_address:data.SpouseAddress,
-        spouse_relation_status:data.LivingStatus,
-        no_of_childern:data.no_of_childern,
-        guardian_name:data.GuardianName,
-        guardian_contact_number:data.ContactNo ,
-        guardian_email:data.Email,
-        guardian_address:data.Address
-    }}, {new: true}, (err, doc) => {
+    Patient.findByIdAndUpdate(data.id, {$set:{
+    father_name:data.fatherName,
+    father_address:data.fatherAddress,
+    father_number:data.fatherNumber,
+    father_email:data.fatherEmail,
+    guardian_name:data.guardianName,
+    guardian_contact_number:data.guardianNumber,
+    guardian_email:data.guardianEmail,
+    guardian_address:data.guardianAddress,
+    spouse_name:data.spouseName,
+    spouse_age:data.spouseAge,
+    spouse_occupation:data.spouseOccupation,
+    spouse_address:data.spouseAddress,
+    spouse_relation_status:data.relationShipStatus,
+    no_of_childern:data.childernsCount
+    }},(err, doc) => {
         if (err) {
             console.log("Something wrong when updating data!");
         }
