@@ -13,7 +13,9 @@ var ThoughtContecntSchema = new Schema({
     Third:{type:Schema.Types.String},
     Fourth:{type:Schema.Types.String},
     Fifth:{type:Schema.Types.String},
-    ThoughtContentExample2:{type:Schema.Types.String}
+    ThoughtContentExample2:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
     
 });
 

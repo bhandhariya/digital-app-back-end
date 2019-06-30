@@ -9,6 +9,8 @@ var AffectSchema = new Schema({
     Congruence:{type:Schema.Types.String},
     Stability:{type:Schema.Types.String},
     Range:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
     
 });
 

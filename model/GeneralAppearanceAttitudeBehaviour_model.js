@@ -15,7 +15,9 @@ var GeneralAtptuSchema = new Schema({
     Rapport:{type:Schema.Types.String},
     Gesturing:{type:Schema.Types.String},
     OtherMovements:{type:Schema.Types.String},
-    otherCatatolicPhemenon:{type:Schema.Types.String}
+    otherCatatolicPhemenon:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
     
 });
 

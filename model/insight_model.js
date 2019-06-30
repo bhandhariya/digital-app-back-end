@@ -7,7 +7,9 @@ var InsightSchema = new Schema({
     AttributiontoPhysicalCause:{type:Schema.Types.String},
     RecognitionofPersonalResponsibility:{type:Schema.Types.String},
     WillingnesstotakeTreatement:{type:Schema.Types.String},
-    Grade:{type:Schema.Types.String}
+    Grade:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
     
 });
 

@@ -16,7 +16,9 @@ var PsychometriActivitySpeechAchema = new Schema({
     Relavance:{type:Schema.Types.String},
     Coherence:{type:Schema.Types.String},
     Other:{type:Schema.Types.String},
-    example:{type:Schema.Types.String} 
+    example:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
 });
 
 module.exports = mongoose.model('PsychometricActivitySpeech', PsychometriActivitySpeechAchema);

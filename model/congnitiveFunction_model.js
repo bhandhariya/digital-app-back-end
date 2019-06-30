@@ -25,7 +25,9 @@ var CognitiveFunctionSchema = new Schema({
     RecentVisualRecallAfter10Minut:{type:Schema.Types.String},
     RemotePersonalEvents:{type:Schema.Types.String},
     RemoteImPersonalEvents:{type:Schema.Types.String},
-    RemoteIllnessRelatedEvents:{type:Schema.Types.String}
+    RemoteIllnessRelatedEvents:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
 });
 
 module.exports = mongoose.model('CognitiveFunction', CognitiveFunctionSchema);

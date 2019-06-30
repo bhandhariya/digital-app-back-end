@@ -13,7 +13,9 @@ var GPESchema = new Schema({
     RespiratorySystem:{type:Schema.Types.String},
     CardioVescularSystem:{type:Schema.Types.String},
     GPEGastroIntestinalSystem:{type:Schema.Types.String},
-    CentralNervousSystem:{type:Schema.Types.String}
+    CentralNervousSystem:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
     
 });
 

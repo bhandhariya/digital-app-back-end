@@ -14,7 +14,9 @@ var IntelligenceSchema = new Schema({
     Abstraction:{type:Schema.Types.String},
     InterpretationofProverb:{type:Schema.Types.String},
     SimilaritiesbetweenPairedObject:{type:Schema.Types.String},
-    DIsSimilaritiesbetweenPairedObject:{type:Schema.Types.String}
+    DIsSimilaritiesbetweenPairedObject:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
     
 });
 
