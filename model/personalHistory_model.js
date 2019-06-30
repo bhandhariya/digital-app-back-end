@@ -10,6 +10,8 @@ var PersonalHistorySchema = new Schema({
     OccupationHistory:{type:Schema.Types.String},
     MarritalandSexualHistory:{type:Schema.Types.String},
     MenstrualandobstetricHistory:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
     
 });
 

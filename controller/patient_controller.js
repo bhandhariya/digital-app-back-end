@@ -30,6 +30,8 @@ exports.createNewPatient=function(req,res,next){
     console.log(req.body)
     var pat=new Patient({
         _id:new mongoose.Types.ObjectId,
+        cretatedBy:req.body.cretatedBy,
+        cretionTime:Date.now(),
         doctorName:req.body.doctorName,
         addmission_date:req.body.addmissionDate,
         first_name:req.body.firstName,
@@ -142,7 +144,9 @@ exports.addFamilyData=function(req,res,next){
     spouse_occupation:data.spouseOccupation,
     spouse_address:data.spouseAddress,
     spouse_relation_status:data.relationShipStatus,
-    no_of_childern:data.childernsCount
+    no_of_childern:data.childernsCount,
+    lastUpdate:Date.now(),
+    updatedBy:data.updatedBy
     }},(err, doc) => {
         if (err) {
             console.log("Something wrong when updating data!");
@@ -191,6 +195,8 @@ exports.addcomplain=function(req,res,next){
     console.log(data);
     var complain=new Complain({
         patient_id:data.id,
+        createdBy:data.createdBy,
+        creationDate:Date.now(),
         complain:data.ComplaintName,
         complain_duration:data.ComplaintDuration
     })
@@ -214,7 +220,9 @@ exports.addIllness=function(req,res,next){
         Course:data.Course,
         PredisposingFactors:data.PredisposingFactors,
         PrecipatingFactors:data.PrecipatingFactors,
-        PrepetuatingFactors:data.PrepetuatingFactors
+        PrepetuatingFactors:data.PrepetuatingFactors,
+        createdBy:data.createdBy,
+        creationDate:Date.now(),
     })
     ill.save(function(err,com){
         if(!err && com){
@@ -270,7 +278,9 @@ exports.addPresentHistory=function(req,res){
     console.log(data)
     var history=new PresentHistory({
         patient_id:data.id,
-        history:data.history
+        history:data.history,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
     });
     history.save(function(err,com){
         if(!err && com){
@@ -287,7 +297,9 @@ exports.addPastHistory=function(req,res){
     var data=req.body;
     var history=new PastHistory({
         patient_id:data.id,
-        history:data.history
+        history:data.history,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
     });
     history.save(function(err,com){
         if(!err && com){
@@ -304,9 +316,12 @@ exports.AddHistoryOfModeOfIntake=function(req,res){
     console.log(data)
     var history=new PastHiHisrotyOfModeOfIntakestory({
         patient_id:data.id,
-        PsychatricHistory:data.psy,
-        MedicalHistory:data.med
+        PsychatricHistory:data.PsychiatricHistory,
+        MedicalHistory:data.MedicalcHistory,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
     })
+    console.log(history)
     history.save(function(err,com){
         if(!err && com){
             res.send(com)
@@ -329,8 +344,11 @@ exports.addTreatementHistory=function(req,res){
     console.log(data)
     var history=new TreatementHistory({
         patient_id:data.id,
-        presentHistory:data.Present,
-        pastHistory:data.Past
+        PresentTreatementHistory:data.PresentTreatementHistory,
+        PastTreatementHistory:data.PastTreatementHistory,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
+        
     })
     history.save(function(err,com){
         if(!err && com){
@@ -349,7 +367,9 @@ exports.addFamilyHistory=function(req,res){
         mentalHistory:data.mental,
         environHistory:data.environment,
         attitudeHistory:data.attitute,
-        livingHistory:data.living
+        livingHistory:data.living,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
     })
     history.save(function(err,com){
         if(!err && com){
@@ -371,7 +391,9 @@ exports.addPersonalHistory=function(req,res){
     EducationHistory:data.Education,
     OccupationHistory:data.Occupation,
     MarritalandSexualHistory:data.MarritalandSexual,
-    MenstrualandobstetricHistory:data.Menstrualandobstetric
+    MenstrualandobstetricHistory:data.Menstrualandobstetric,
+    createdBy:data.createdBy,
+    creationDate:Date.now()
     })
     history.save(function(err,com){
         if(!err && com){
@@ -392,7 +414,9 @@ exports.addSubstanceHistory=function(req,res){
         HistoryOfTotalDurationOfUse:data.HistoryOfTotalDurationOfUse,
         HistoryOfDurationOfRegularUse:data.HistoryOfDurationOfRegularUse,
         HistoryOfDailyIntake:data.HistoryOfDailyIntake,
-        HistoryOfLastIntakeOfDrug:data.HistoryOfLastIntakeOfDrug
+        HistoryOfLastIntakeOfDrug:data.HistoryOfLastIntakeOfDrug,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
     })
     history.save(function(err,com){
         if(!err && com){
@@ -409,7 +433,9 @@ exports.addLegalHistory=function(req,res){
     var history=new LegalHistory({
         patient_id:data.id,
         HomicideAttempt:data.HomicideAttempt,
-        preMorbidpersonality:data.preMorbidpersonality
+        preMorbidpersonality:data.preMorbidpersonality,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
     })
     history.save(function(err,com){
         if(!err && com){

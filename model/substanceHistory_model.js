@@ -8,7 +8,9 @@ var SubstanceHistorySchema = new Schema({
     DevelopmentHistory:{type:Schema.Types.String},
     HistoryOfDurationOfRegularUse:{type:Schema.Types.String},
     HistoryOfDailyIntake:{type:Schema.Types.String},
-    HistoryOfLastIntakeOfDrug:{type:Schema.Types.String}
+    HistoryOfLastIntakeOfDrug:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
     
 });
 

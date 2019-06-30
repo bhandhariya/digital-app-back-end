@@ -13,6 +13,7 @@ exports.getDataById=function(req,res,next){
     var data=req.body;
     User.findById(data.id).exec(function(err,pat){
         if(!err && pat){
+            console.log(pat)
             res.send(pat)
         }
     })

@@ -3,6 +3,8 @@ var Schema = mongoose.Schema;
 
 var PatientSchema = new Schema({
     _id:{type:Schema.Types.ObjectId,required:true},
+    cretatedBy:{type:Schema.Types.String,},
+    cretionTime:{type:Schema.Types.Date},
     doctorName:{type:Schema.Types.String,required:true},
     addmission_date:{type:Schema.Types.Date},
     first_name:{type:Schema.Types.String},
@@ -42,7 +44,9 @@ var PatientSchema = new Schema({
     spouse_occupation:{type:Schema.Types.String},
     spouse_address:{type:Schema.Types.String},
     spouse_relation_status:{type:Schema.Types.String},
-    no_of_childern:{type:Schema.Types.Number}
+    no_of_childern:{type:Schema.Types.Number},
+    lastUpdate:{type:Schema.Types.Date},
+    updatedBy:{type:Schema.Types.String}
 
 
 

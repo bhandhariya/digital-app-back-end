@@ -10,7 +10,9 @@ var IllnessSchema = new Schema({
     Course:String,
     PredisposingFactors:String,
     PrecipatingFactors:String,
-    PrepetuatingFactors:String
+    PrepetuatingFactors:String,
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
 
 
 

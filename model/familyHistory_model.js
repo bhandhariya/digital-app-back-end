@@ -7,6 +7,8 @@ var FamillyHistorySchema = new Schema({
     environHistory:{type:Schema.Types.String},
     attitudeHistory:{type:Schema.Types.String},
     livingHistory:{type:Schema.Types.String},
+    createdBy:{type:Schema.Types.String},
+    creationDate:{type:Schema.Types.Date},
     
 });
 
