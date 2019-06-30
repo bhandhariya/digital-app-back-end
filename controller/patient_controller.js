@@ -515,7 +515,9 @@ exports.addGeneralAptitudeBehaviour=function(req,res){
       Rapport:data.Rapport,
       Gesturing:data.Gesturing,
       OtherMovements:data.OtherMovements,
-      otherCatatolicPhemenon:data.otherCatatolicPhemenon 
+      otherCatatolicPhemenon:data.otherCatatolicPhemenon,
+      createdBy:data.createdBy,
+      creationDate:Date.now()
     })
     obj.save(function(err,com){
         if(!err && com){
@@ -545,7 +547,9 @@ exports.addPsychomotorActivitySpeech=function(req,res){
         Relavance:data.Relavance,
         Coherence:data.Coherence,
         Other:data.Other,
-        example:data.example
+        example:data.example,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
     })
    
     obj.save(function(err,com){
@@ -569,7 +573,9 @@ exports.addAffect=function(req,res){
         Objective:data.Objective,
         Congruence:data.Congruence,
         Stability:data.Stability,
-        Range:data.Range
+        Range:data.Range,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
        
     })
    
@@ -599,7 +605,9 @@ exports.addThoughtContent=function(req,res){
         Third:data.Third,
         Fourth:data.Fourth,
         Fifth:data.Fifth,
-        ThoughtContentExample2:data.ThoughtContentExample2
+        ThoughtContentExample2:data.ThoughtContentExample2,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
        
     })
    
@@ -622,7 +630,9 @@ exports.addPossession=function(req,res){
         Complusion:data.Complusion,
         ObsessiveCompulsive:data.ObsessiveCompulsive,
         ThoughtAlienationPhenomenon:data.ThoughtAlienationPhenomenon,
-        ThoughtAlienationPhenomenonExample:data.ThoughtAlienationPhenomenonExample
+        ThoughtAlienationPhenomenonExample:data.ThoughtAlienationPhenomenonExample,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
        
     })
    
@@ -645,7 +655,9 @@ exports.addPerception=function(req,res){
         Perception1:Data.Perception1,
         Perception2:Data.Perception2,
         Perception3:Data.Perception3,
-        PerceptionExample:Data.PerceptionExample
+        PerceptionExample:Data.PerceptionExample,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
        
     })
    
@@ -687,7 +699,9 @@ exports.addCongnitiveFunction=function(req,res,next){
   RecentVisualRecallAfter10Minut:data.RecentVisualRecallAfter10Minut,
   RemotePersonalEvents:data.RemotePersonalEvents,
   RemoteImPersonalEvents:data.RemoteImPersonalEvents,
-  RemoteIllnessRelatedEvents:data.RemoteIllnessRelatedEvents
+  RemoteIllnessRelatedEvents:data.RemoteIllnessRelatedEvents,
+  createdBy:data.createdBy,
+  creationDate:Date.now()
     })
     obj.save(function(err,result){
         if(!err && result){
@@ -715,7 +729,9 @@ exports.addIntelligence=function(req,res,next){
         Abstraction:data.Abstraction,
         InterpretationofProverb:data.InterpretationofProverb,
         SimilaritiesbetweenPairedObject:data.SimilaritiesbetweenPairedObject,
-        DIsSimilaritiesbetweenPairedObject:data.DIsSimilaritiesbetweenPairedObject
+        DIsSimilaritiesbetweenPairedObject:data.DIsSimilaritiesbetweenPairedObject,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
         
     })
     obj.save(function(err,result){
@@ -736,7 +752,9 @@ exports.addJudgement=function(req,res,next){
         patient_id:data.id,
         JudgementPerosnal:data.JudgementPerosnal,
         JudgementSocial:data.JudgementSocial,
-        JudgementTest:data.JudgementTest
+        JudgementTest:data.JudgementTest,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
         
         
     })
@@ -759,7 +777,9 @@ exports.addInsight=function(req,res,next){
       AttributiontoPhysicalCause:data.AttributiontoPhysicalCause,
       RecognitionofPersonalResponsibility:data.RecognitionofPersonalResponsibility,
       WillingnesstotakeTreatement:data.WillingnesstotakeTreatement,
-      Grade:data.Grade
+      Grade:data.Grade,
+      createdBy:data.createdBy,
+      creationDate:Date.now()
         
         
     })
@@ -788,7 +808,9 @@ exports.addGPE=function(req,res,next){
         RespiratorySystem:data.RespiratorySystem,
         CardioVescularSystem:data.CardioVescularSystem,
         GPEGastroIntestinalSystem:data.GPEGastroIntestinalSystem,
-        CentralNervousSystem:data.CentralNervousSystem
+        CentralNervousSystem:data.CentralNervousSystem,
+        createdBy:data.createdBy,
+        creationDate:Date.now()
         
         
     })
