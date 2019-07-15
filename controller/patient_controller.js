@@ -336,7 +336,23 @@ exports.AddHistoryOfModeOfIntake=function(req,res){
 exports.TestAPI=function(req,res){
     var data=req.body;
     console.log(data)
-    res.send(data)
+    var obj=new Perception({
+    patient_id:data.id,
+    Perception1:data.Perception1,
+    Perception2:data.Perception2,
+    Perception3:data.Perception2,
+    PerceptionExample:data.PerceptionExample,
+    createdBy:data.createdBy,
+    creationDate:Date.now()
+    })
+    console.log(obj);
+    obj.save(function(err,com){
+        if(!err && com){
+            res.send(com)
+        }else{
+            console.log(err)
+        }
+    })
 }
 
 exports.addTreatementHistory=function(req,res){
@@ -369,7 +385,8 @@ exports.addFamilyHistory=function(req,res){
         attitudeHistory:data.attitute,
         livingHistory:data.living,
         createdBy:data.createdBy,
-        creationDate:Date.now()
+        creationDate:Date.now(),
+        familyTree:data.familyTree
     })
     history.save(function(err,com){
         if(!err && com){
@@ -390,7 +407,8 @@ exports.addPersonalHistory=function(req,res){
     DevelopmentHistory:data.Development,
     EducationHistory:data.Education,
     OccupationHistory:data.Occupation,
-    MarritalandSexualHistory:data.MarritalandSexual,
+    MarritalHistory:data.Marrital,
+    SexualHistory:data.Sexual,
     MenstrualandobstetricHistory:data.Menstrualandobstetric,
     createdBy:data.createdBy,
     creationDate:Date.now()
@@ -647,30 +665,6 @@ exports.addPossession=function(req,res){
 }
 
 
-exports.addPerception=function(req,res){
-    var data=req.body;
-   console.log(data)
-    var obj=new Perception({
-        patient_id:data.id,
-        Perception1:Data.Perception1,
-        Perception2:Data.Perception2,
-        Perception3:Data.Perception3,
-        PerceptionExample:Data.PerceptionExample,
-        createdBy:data.createdBy,
-        creationDate:Date.now()
-       
-    })
-   
-    obj.save(function(err,com){
-        if(!err && com){
-            console.log(com)
-            
-        }else{
-            console.log(err)
-        }
-    })
-}
-
 exports.addCongnitiveFunction=function(req,res,next){
     var data=req.body;
     console.log(data);
@@ -821,4 +815,9 @@ exports.addGPE=function(req,res,next){
             console.log(err)
         }
     })
+}
+
+exports.addPatPerception=function(req,res){
+    var data=req.body;
+    console.log(data)
 }

@@ -62,8 +62,6 @@ router.post('/addThoughtContent',PatientController.addThoughtContent);
 
 router.post('/addPossession',PatientController.addPossession);
 
-router.post('/addPerception',PatientController.addPerception);
-
 router.post('/addCongnitiveFunction',PatientController.addCongnitiveFunction);
 
 router.post('/addIntelligence',PatientController.addIntelligence);
@@ -75,5 +73,7 @@ router.post('/addInsight',PatientController.addInsight);
 router.post('/addGPE',PatientController.addGPE);
 
 router.post('/test',PatientController.TestAPI);
+
+router.post('addPatPerception',PatientController.addPatPerception)
 
 module.exports = router;
