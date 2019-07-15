@@ -9,6 +9,7 @@ var FamillyHistorySchema = new Schema({
     livingHistory:{type:Schema.Types.String},
     createdBy:{type:Schema.Types.String},
     creationDate:{type:Schema.Types.Date},
+    familyTree:{type:Schema.Types.String}
     
 });
 
